@@ -1,0 +1,64 @@
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.two-dropdowns {
+  display: flex;
+  flex-direction: column;
+}
+
+.options .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.profit-labels {
+  margin: 20px;
+
+  border: 2mm ridge rgba(170, 50, 220, 0.6);
+}
+
+.market-infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.order-table {
+  margin-left: 50px;
+}
+
+.order-table .table {
+  background-color: rgb(30, 31, 36);
+  color: white;
+}
+.order-table .ask-row {
+  color: red;
+}
+
+.order-table .bid-row {
+  color: rgb(24, 168, 24);
+}
+.trades-table {
+  margin-left: 50px;
+}
+
+.trades-table .table {
+  background-color: rgb(30, 31, 36);
+  color: white;
+}
+
+.trades-table .trade-row {
+}
+.trade-row.buy {
+  color: rgb(24, 168, 24);
+}
+
+.trade-row.sell {
+  color: red;
+}

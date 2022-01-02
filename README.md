@@ -1,4 +1,6 @@
-# Market Scanner - Simple app that makes it easier to identify arbitrage opportunities between crypto currency exchanges by pulling up the order-books and displaying profit margin.
+# Market Scanner - Crypto Arbitrage Made Easy
+
+Simple app that makes it easier to identify arbitrage opportunities between crypto currency exchanges by pulling up the order-books and displaying profit margin.
 
 ## Live Demo:
 
@@ -19,6 +21,10 @@ Cryptocurrency arbitrage is a strategy in which investors buy a cryptocurrency o
 The app supports over 112 crypto exchanges. Exchange information is pulled from CCXT. If you see a Network Error it’s probably because CCXT api had a problem making the HTTP request. Please see their [page](https://github.com/ccxt/ccxt) for exchange availabilities.
 
 ## Usage
+
+run:
+npm install
+npm start
 
 Simply pick 2 exchanges using the UI, then input a pair(ex: ETH/USDT). Hitting the refresh will bring up the order books of the pair from both exchanges, and calculate the profit you can potentially make by limit buying on one exchange, and market selling on the other (or vice versa).
 

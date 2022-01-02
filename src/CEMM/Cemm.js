@@ -14,12 +14,12 @@ import {
 import { OrderTable, TradesTable } from './CEMMDisplay';
 
 export function Cemm() {
-  const [ex1, setEx1] = useState('btcturk');
+  const [ex1, setEx1] = useState('bitstamp');
   const [pairList1, setPairList1] = useState(['loading...']);
-  const [pair1, setPair1] = useState('');
+  const [pair1, setPair1] = useState('BTC/USDT');
   const [ex2, setEx2] = useState('binance');
   const [pairList2, setPairList2] = useState(['loading...']);
-  const [pair2, setPair2] = useState('');
+  const [pair2, setPair2] = useState('BTC/USDT');
   //the actual props that will be send
   const [inputs1, setInputs1] = useState({
     exchange: null,
@@ -51,6 +51,8 @@ export function Cemm() {
     //fetch pairs for the default exchanges
     fetchPairs_(ex1, 'low');
     fetchPairs_(ex2, 'high');
+    //show an initial default table
+    handleRefresh();
   }, []);
 
   //anytime the output changes, update the profitStr

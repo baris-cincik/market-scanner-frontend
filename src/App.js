@@ -1,5 +1,5 @@
 import './App.css';
-import { Cemm } from './CEMM/Cemm';
+import { Cemm } from './scanner/Scanner';
 //this is required for the styling of your bootstrap elements
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';

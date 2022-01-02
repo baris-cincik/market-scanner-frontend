@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# Market Scanner - Simple app that makes it easier to identify arbitrage opportunities between crypto currency exchanges by pulling up the order-books and displaying profit margin.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Demo:
 
-## Available Scripts
+https://peaceful-noether-64442f.netlify.app/
 
-In the project directory, you can run:
+![alt text](https://user-images.githubusercontent.com/35776119/147883915-fc172fc2-b79a-4b6e-a718-c604b2b14a23.png)
 
-### `npm start`
+## Backend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The backend is a simple Flask app running on Heroku. If you wish to modify it, you can find it [HERE](https://github.com/baris-cincik/market-scanner-backend):
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## What is Arbitrage?
 
-### `npm test`
+Cryptocurrency arbitrage is a strategy in which investors buy a cryptocurrency on one exchange and then quickly sell it on another exchange for a higher price, or vice versa.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Supported Exchanges
 
-### `npm run build`
+The app supports over 112 crypto exchanges. Exchange information is pulled from CCXT. If you see a Network Error it’s probably because CCXT api had a problem making the HTTP request. Please see their [page](https://github.com/ccxt/ccxt) for exchange availabilities.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Simply pick 2 exchanges using the UI, then input a pair(ex: ETH/USDT). Hitting the refresh will bring up the order books of the pair from both exchanges, and calculate the profit you can potentially make by limit buying on one exchange, and market selling on the other (or vice versa).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+NOTE: The profit percentage does NOT include trading fees.

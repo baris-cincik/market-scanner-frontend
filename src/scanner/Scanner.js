@@ -14,13 +14,13 @@ import {
 import { OrderTable, TradesTable } from './CEMMDisplay';
 
 export function Cemm() {
-  const [ex1, setEx1] = useState('bitstamp');
+  const [ex1, setEx1] = useState('bequant');
   const [pairList1, setPairList1] = useState(['loading...']);
   const [pair1, setPair1] = useState('BTC/USDT');
   const [ex2, setEx2] = useState('binance');
   const [pairList2, setPairList2] = useState(['loading...']);
   const [pair2, setPair2] = useState('BTC/USDT');
-  //the actual props that will be send
+  //the actual props that will be sent
   const [inputs1, setInputs1] = useState({
     exchange: null,
     pair: null,
@@ -73,7 +73,6 @@ export function Cemm() {
       setEx2(e);
       fetchPairs_(e, 'high');
     }
-    //make a call to backend
   }
 
   //fetches pairs for the given exc and sets to the appropriate pair variable

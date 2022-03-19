@@ -12,9 +12,10 @@ export function MyNavbar() {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/">Market Scanner</Navbar.Brand>
+        <Navbar.Brand href="/">CEMM PRO</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="/cemm">CEMM</Nav.Link>
+          <Nav.Link href="/cemm">Scanner</Nav.Link>
+          <Nav.Link href="/trackers">Tracker</Nav.Link>
           <Nav.Link href="/perpetual">Perpetual</Nav.Link>
           <Nav.Link href="/arbitrage">Arbitrage</Nav.Link>
         </Nav>

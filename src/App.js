@@ -4,6 +4,7 @@ import { Cemm } from './scanner/Scanner';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { MyNavbar } from './navbar';
+import { TrackersPage } from './tracker/TrackersPage';
 
 //Router has changed in v6. You use "Routes" instead of "Switch" and "element" instead of "component"
 function App() {
@@ -17,8 +18,9 @@ function App() {
       <Router>
         {/*<Navbar></Navbar>*/}
         <Routes>
-          <Route path="/" element={<Cemm />}></Route>
+          <Route path="/" element={<TrackersPage />}></Route>
           <Route path="/cemm" element={<Cemm />}></Route>
+          <Route path="/trackers" element={<TrackersPage />}></Route>
         </Routes>
       </Router>
     </div>

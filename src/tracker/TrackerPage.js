@@ -9,12 +9,30 @@ import axios from 'axios';
 import { sortRecordsByTime, sortRecordsByProfit } from '../utils/utils';
 
 export function TrackerPage() {
+  const [id, setId] = useState(useParams().id);
+  const [metadata, setMetadata] = useState(null);
   //fetch tracker data
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchMetadata();
+  }, []);
+
+  async function fetchMetadata() {
+    let meta = await ts.fetchTrackerMetadata(id);
+    setMetadata(meta);
+    console.log(meta.pair);
+  }
 
   return (
     <div className="tracker-page">
-      <div className="tracker-metadata"></div>
+      <div className="tracker-metadata">
+        <div>
+          exchanges: {metadata.ex_low}, {metadata.ex_high}{' '}
+        </div>
+        <div>pair: {metadata.pair}</div>
+        <div>frequency: {metadata.frequency} seconds</div>
+        <div>status: {metadata.status}</div>
+        <div>error: {metadata.error}</div>
+      </div>
 
       <TrackerDataTable></TrackerDataTable>
     </div>
@@ -66,7 +84,7 @@ export function TrackerDataTable(props) {
 
   if (data && metadata)
     return (
-      <div>
+      <div className="tracker-data">
         <div className="sort-buttons">
           <button onClick={() => onSort('profit')}>Sort By Profit</button>
           <button onClick={() => onSort('time')}>Sort By Time</button>

@@ -1,2 +1,6 @@
 .tracker-table {
 }
+
+.sort-buttons button {
+  margin: 3%;
+}

@@ -6,6 +6,7 @@ import './Trackers.css';
 import './TrackerPage.css';
 import { CemmInput } from '../utils/CemmInput';
 import axios from 'axios';
+import { sortRecordsByTime, sortRecordsByProfit } from '../utils/utils';
 
 export function TrackerPage() {
   //fetch tracker data
@@ -48,8 +49,17 @@ export function TrackerDataTable(props) {
   }
 
   function onSort(type) {
-    if (type === sortBy) return;
+    if (type === sortBy) return; //already sorted
     console.log('attempting to sort tracker records by: ' + type);
+    if (type === 'time') {
+      sortRecordsByTime(data);
+      setData(data);
+      //setData(sortRecordsByTime(data));
+      console.log('Records sorted by time');
+    } else if (type === 'profit') {
+      sortRecordsByProfit(data);
+      setData(data);
+    }
     //perform sorting
     setSortBy(type);
   }
@@ -75,7 +85,7 @@ export function TrackerDataTable(props) {
               <th>{`Time`}</th>
             </tr>
             {data.map((record, index) => (
-              <tr key={record.id} className={`cemm-record`}>
+              <tr key={index} className={`cemm-record`}>
                 <td>{record.row_id}</td>
                 <td>
                   <div>{record.buy_low}</div>

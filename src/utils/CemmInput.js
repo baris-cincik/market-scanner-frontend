@@ -14,7 +14,7 @@ import {
 import { OrderTable, TradesTable } from '../scanner/CEMMDisplay';
 
 export function CemmInput(props) {
-  const [ex1, setEx1] = useState('bequant');
+  const [ex1, setEx1] = useState('btcturk');
   const [pairList1, setPairList1] = useState(['loading...']);
   const [pair1, setPair1] = useState('BTC/USDT');
   const [ex2, setEx2] = useState('binance');
@@ -43,6 +43,11 @@ export function CemmInput(props) {
     //handleRefresh();
   }, []);
 
+  //whenever there is a change with the state, trigger onChange to pass the state to parent
+  useEffect(() => {
+    props.onChange(ex1, ex2, pair1, pair2);
+  }, [ex1, ex2, pair1, pair2]);
+
   //sets the new values with respect to dropdown
   async function handleExcDropdown(e, type) {
     console.log(e);
@@ -69,6 +74,7 @@ export function CemmInput(props) {
     setExchangeList(exchanges);
   }
 
+  //DEPRECATED. Submit is now done on the parent component
   //returns the ExchangeInfo widget with updated props
   async function onSubmit() {
     if (pair1 === '' || pair2 === '') {
@@ -83,10 +89,9 @@ export function CemmInput(props) {
   }
   return (
     <div className="cemm">
-      <h5 style={{ marginTop: '25px' }}>Cross Exchange Market Making PRO</h5>
       <div className="options">
         {types.map((type) => (
-          <div className="two-dropdowns">
+          <div className="two-dropdowns" key={type}>
             <label htmlFor="name">{`Pick ${type} liquidity exchange`}:</label>
             <DropdownButton
               className="exchange-dropdown"
@@ -140,9 +145,9 @@ export function CemmInput(props) {
           </div>
         ))}
       </div>
-      <Button variant="success" onClick={onSubmit}>
+      {/** <Button variant="success" onClick={onSubmit}>
         {props.btnTitle}
-      </Button>{' '}
+      </Button>{' '}*/}
     </div>
   );
 

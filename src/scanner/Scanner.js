@@ -12,7 +12,9 @@ import {
   fetchRecentTrades,
 } from '../api/MarketService';
 import { OrderTable, TradesTable } from './CEMMDisplay';
+import { CemmInput } from '../utils/CemmInput';
 
+// TODO: Get rid of excess code in Cemm and replace it with CemmInput component
 export function Cemm() {
   const [ex1, setEx1] = useState('bequant');
   const [pairList1, setPairList1] = useState(['loading...']);
@@ -89,14 +91,6 @@ export function Cemm() {
     setExchangeList(exchanges);
   }
 
-  //deprecated
-  async function handlePairDropdown(e, type) {
-    return;
-    console.log(e);
-    if (type === 'low') setPair1(e);
-    else if (type === 'high') setPair2(e);
-  }
-
   //returns the ExchangeInfo widget with updated props
   async function handleRefresh() {
     if (pair1 === '' || pair2 === '') {
@@ -167,7 +161,7 @@ export function Cemm() {
               className="pair-dropdown"
               id="dropdown-basic-button"
               title="pairs"
-              onSelect={(e) => handlePairDropdown(e, type)}
+              onSelect={(e) => null}
             >
               {getPairList(type).map((pair) => (
                 <Dropdown.Item eventKey={pair} key={pair}>

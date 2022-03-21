@@ -1,2 +1,17 @@
 .trackers-table .tracker-row {
 }
+
+.tracker-creator .frequency-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frequency-picker input {
+  width: 100px;
+  margin-bottom: 2%;
+}
+
+.create-tracker-btn {
+  margin-bottom: 5%;
+}

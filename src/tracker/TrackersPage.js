@@ -3,6 +3,9 @@ import * as ts from '../api/TrackerService';
 import Table from 'react-bootstrap/Table';
 import './Trackers.css';
 import { CemmInput } from '../utils/CemmInput';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import { TrackerCreator } from './TrackerCreator';
 
 export function TrackersPage() {
   const [trackers, setTarckers] = useState([]);
@@ -23,18 +26,47 @@ export function TrackersPage() {
     //setTarckers(trackers);
   }
 
-  function onStopTracker(id) {
+  async function onStopTracker(id) {
     console.log('Attempting to stop tracker: ' + id);
+    let res = await ts.stopTracker(id);
+    if (res === true)
+      alert(
+        'Tracker: ' +
+          id +
+          ' stopped successfully. Refresh the page to see the changes.'
+      );
+    else alert(res);
   }
 
-  function onDeleteTracker(id) {
+  async function onRestartTracker(id) {
+    console.log('Attempting to restart tracker: ' + id);
+    let res = await ts.restartTracker(id);
+    if (res === true)
+      alert(
+        'Tracker: ' +
+          id +
+          ' restarted successfully. Refresh the page to see the changes.'
+      );
+    else alert(res);
+  }
+
+  async function onDeleteTracker(id) {
     console.log('Attempting to delete tracker: ' + id);
+    let res = await ts.deleteTracker(id);
+    if (res === true)
+      alert(
+        'Tracker: ' +
+          id +
+          ' deleted successfully. Refresh the page to see the changes.'
+      );
+    else alert(res);
   }
 
   return (
     <div className="trackers-page">
-      <CemmInput></CemmInput>
-      <div>List trackers here</div>
+      <h5 style={{ marginTop: '25px' }}>Cross Exchange Market Tracker PRO</h5>
+      <TrackerCreator></TrackerCreator>
+      <h5>List of Trackers</h5>
       <Table bordered hover size="sm" className="table trackers-table">
         <thead></thead>
         <tbody>
@@ -69,7 +101,16 @@ export function TrackersPage() {
               </td>
               <td>{tracker.error}</td>
               <td>
-                <button onClick={() => onStopTracker(tracker.id)}>Stop</button>
+                {tracker.status === 'running' ? (
+                  <button onClick={() => onStopTracker(tracker.id)}>
+                    Stop
+                  </button>
+                ) : (
+                  <button onClick={() => onRestartTracker(tracker.id)}>
+                    Restart
+                  </button>
+                )}
+
                 <button onClick={() => onDeleteTracker(tracker.id)}>
                   Delete
                 </button>

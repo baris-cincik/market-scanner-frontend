@@ -24,15 +24,17 @@ export function TrackerPage() {
 
   return (
     <div className="tracker-page">
-      <div className="tracker-metadata">
-        <div>
-          exchanges: {metadata.ex_low}, {metadata.ex_high}{' '}
+      {metadata !== null ? (
+        <div className="tracker-metadata">
+          <div>
+            exchanges: {metadata.ex_low}, {metadata.ex_high}{' '}
+          </div>
+          <div>pair: {metadata.pair}</div>
+          <div>frequency: {metadata.frequency} seconds</div>
+          <div>status: {metadata.status}</div>
+          <div>error: {metadata.error}</div>
         </div>
-        <div>pair: {metadata.pair}</div>
-        <div>frequency: {metadata.frequency} seconds</div>
-        <div>status: {metadata.status}</div>
-        <div>error: {metadata.error}</div>
-      </div>
+      ) : null}
 
       <TrackerDataTable></TrackerDataTable>
     </div>

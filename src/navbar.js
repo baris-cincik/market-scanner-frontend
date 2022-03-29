@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import { TradeAnalyzerPage } from './analyzer/TradeAnalyzerPage';
 
 export function MyNavbar() {
   const [user, setUser] = useState(null);
@@ -18,6 +19,7 @@ export function MyNavbar() {
           <Nav.Link href="/trackers">Tracker</Nav.Link>
           <Nav.Link href="/perpetual">Perpetual</Nav.Link>
           <Nav.Link href="/arbitrage">Arbitrage</Nav.Link>
+          <Nav.Link href="/analyze-trades">Trade Analysis</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

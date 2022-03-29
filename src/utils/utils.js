@@ -1,3 +1,5 @@
+import dateFormat, { masks } from 'dateformat';
+
 export function dateDiff(date1, date2) {
   let time1 = date1.getTime();
   let time2 = date2.getTime();
@@ -64,4 +66,16 @@ function byProfit(record1, record2) {
     return 1; //record2 before record1
   }
   return 0;
+}
+
+// converts linux timestamp to EST
+export function timeStampToEST(ts) {
+  var dt = new Date(parseInt(ts));
+  dt.setTime(dt.getTime() + dt.getTimezoneOffset() * 60 * 1000);
+
+  var offset = -240; //Timezone offset for EST in minutes.
+  var estDate = new Date(dt.getTime() + offset * 60 * 1000);
+  //console.log(estDate);
+  let formatted = dateFormat(estDate, 'mmmm dS, HH:MM:ss TT');
+  return formatted;
 }

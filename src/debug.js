@@ -10,7 +10,8 @@ export function Debug() {
   function onDebug() {
     console.log('debugging ...');
     let now = Date.now();
-    let est = timeStampToEST(now);
+    let now2 = Math.floor(new Date().getTime() / 1000);
+    let est = timeStampToEST(now2); //1648928412
     console.log(est);
   }
 

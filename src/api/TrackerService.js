@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { EXCHANGES, PAIRS, BACKEND_URL } from '../utils/MyConstants';
+import { TrackerData } from '../tracker/TrackerData';
 
 //ATTENTION: When you see CORS policty error this means the backend failed to send a proper response
 //this could be because your parameters are wrong
@@ -65,7 +66,9 @@ export function fetchTrackerData(id) {
       console.log(response);
       if (response.isSuccess) {
         //perform parsing
-        return resolve(response.data.records);
+        //let trackerData = TrackerData(response.data.records);
+        let trackerData = response.data.records;
+        return resolve(trackerData);
       } else {
         alert(response.error);
         return resolve(null);

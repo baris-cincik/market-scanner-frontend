@@ -6,7 +6,11 @@ import './Trackers.css';
 import './TrackerPage.css';
 import { CemmInput } from '../utils/CemmInput';
 import axios from 'axios';
-import { sortRecordsByTime, sortRecordsByProfit } from '../utils/utils';
+import {
+  sortRecordsByTime,
+  sortRecordsByProfit,
+  timeStampToEST,
+} from '../utils/utils';
 
 export function TrackerPage() {
   const [id, setId] = useState(useParams().id);
@@ -125,7 +129,7 @@ export function TrackerDataTable(props) {
                 </td>
                 <td>{record.profit_buy_sell}</td>
                 <td>{record.profit_sell_buy}</td>
-                <td>{record.time}</td>
+                <td>{timeStampToEST(record.row_id, 's')}</td>
               </tr>
             ))}
           </tbody>

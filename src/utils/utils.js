@@ -68,14 +68,40 @@ function byProfit(record1, record2) {
   return 0;
 }
 
+// converts linux timestamp to EST, type s for seconds m for miliseconds
+export function timeStampToEST(ts, type) {
+  //convert to milisecond
+  if (type === 's') ts = ts * 1000;
+  //console.log(ts);
+  //The Date obejcts takes MILISECOND timestamp
+  var date = new Date(parseInt(ts)); //UTC
+  //console.log(date);
+  let usaTime = date.toLocaleString('en-US', { timeZone: 'America/New_York' });
+  //console.log(usaTime);
+  // let formatted = dateFormat(usaTime, 'mmmm dS, HH:MM:ss TT');
+  // console.log(formatted);
+  return usaTime;
+}
+
+//DEPRECATED
+//the input date must be in UTC
+export const toTimestamp = (strDate) => {
+  strDate = strDate + ' UTC';
+  console.log('before timestamp conversion: ' + strDate);
+  const ts = Date.parse(strDate);
+  let ts_seconds = parseInt(ts / 1000);
+  console.log('matching time stamp: ' + ts_seconds);
+  return ts_seconds;
+};
+
 // converts linux timestamp to EST
-export function timeStampToEST(ts) {
+export function timeStampToESTOld(ts) {
   var dt = new Date(parseInt(ts));
   dt.setTime(dt.getTime() + dt.getTimezoneOffset() * 60 * 1000);
 
   var offset = -240; //Timezone offset for EST in minutes.
   var estDate = new Date(dt.getTime() + offset * 60 * 1000);
-  //console.log(estDate);
+  console.log(estDate);
   let formatted = dateFormat(estDate, 'mmmm dS, HH:MM:ss TT');
   return formatted;
 }

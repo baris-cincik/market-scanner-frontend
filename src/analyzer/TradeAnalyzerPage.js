@@ -115,6 +115,7 @@ export function TradeAnalyzerPage() {
               <thead></thead>
               <tbody>
                 <tr style={{}}>
+                  <th>{`ID`}</th>
                   <th>{`Market`}</th>
                   <th>{`Trade Type & Price (${sorted[0].quote_asset})`}</th>
                   <th>{`Amount (${sorted[0].base_asset})`}</th>
@@ -122,6 +123,7 @@ export function TradeAnalyzerPage() {
                 </tr>
                 {sorted.map((trade, index) => (
                   <tr key={index} className={``}>
+                    <td>{trade.id}</td>
                     <td>{trade.market}</td>
                     <td>
                       {trade.trade_type} at {trade.price}
